@@ -13,9 +13,8 @@ public class EmployeeWageBuilder {
     public static final int NO_WORKINGDAYS = 20;
     public static final int MAX_HRS_MONTH = 100;
 
-    public static void main(String[] args) {
-        System.out.println("Welcome To Employee Wage Computation Program");
-        // Declaring a variables
+    public static int computeWage() {
+        // Declaring the variables
         int empHrs = 0;
         int empWage = 0;
         int totalEmpWage = 0;
@@ -35,15 +34,21 @@ public class EmployeeWageBuilder {
                 case IS_PARTTIME: // PartTime Employee
                     empHrs = 4;
                     break;
-                default: // Employee is absent
+                default:  // Employee is absent
                     empHrs = 0;
             }
             empWage = Emp_Rate_PerHr * empHrs;
             totalEmpHrs += empHrs;
             System.out.println("Day : " + totalWorkingDays + " : Employee worked : " + empHrs + " Hours " +
-                               ", Employee Wage : " + empWage);
+                                ", Employee Wage : " + empWage);
         }
         totalEmpWage = totalEmpHrs * Emp_Rate_PerHr;
-        System.out.println("Total Wages of an Employee is : " + totalEmpWage);
+        System.out.println("Total Wages is : " + totalEmpWage);
+        return totalEmpWage;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Welcome To Employee Wage Computation Program");
+        computeWage();
     }
 }
