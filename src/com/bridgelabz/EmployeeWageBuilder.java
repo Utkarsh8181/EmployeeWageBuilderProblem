@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * @author Utkarsh Mishra
- * Purpose - To check whether Employee is present or absent
+ * Purpose - To calculate the daily wage of an Employee
  */
 public class EmployeeWageBuilder {
 
@@ -12,15 +12,23 @@ public class EmployeeWageBuilder {
         System.out.println("Welcome To Employee Wage Computation Program");
         // Declaring a constant
         int IS_FULLTIME = 1;
+        int Emp_Rate_PerHr = 20;
+        // Declaring a variables
+        int empHrs = 0;
+        int empWage = 0;
         /**
-         * Using Math.random method to generate random numbers 0 and 1
+         * Using Math.random method to generate random numbers 0, 1
          */
         Random random = new Random();
         int empCheck = random.nextInt(2);
         if (empCheck == IS_FULLTIME)
-            System.out.println("The Employee is Present");
+            empHrs = 8;
         else
-            System.out.println("The Employee is Absent");
-
+            empHrs = 0;
+        /**
+         * Calculating the daily employee wage assuming wage per hour as 20 and Full day hour as 8
+         */
+        empWage = Emp_Rate_PerHr * empHrs;
+        System.out.println("The daily wage of an employee is : " + empWage);
     }
 }
