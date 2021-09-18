@@ -3,22 +3,40 @@ package com.bridgelabz;
 import java.util.Random;
 /*
  * @author Utkarsh Mishra
- * Purpose - Calculating wages for a total of working hours of 100 or max days of 20 in a month
+ * Purpose - Calculating Employee Wage for each company and saving it.
  */
 public class EmployeeWageBuilder {
     // Declaring a constant
     public static final int IS_FULLTIME = 1;
     public static final int IS_PARTTIME = 2;
 
-    /* Using static method by passing the 4 argument so that we can call it in static main
-       If we have not used static in method here then we have to create an object inside
-       the main for calling the method.
+    private final String companyName;
+    private final int empRatePerHour;
+    private final int noOfWorkingDays;
+    private final int maxHoursPerMonth;
+    private int totalEmpWage;
+
+    /*
+    I have created a constructor and passing the parameter inside it.
+    Also used this keyword for assigning the class value = parameter value.
      */
-    public static int computeWage(String companyName, int empRatePerHour, int noOfWorkingDays, int maxHoursPerMonth) {
+
+    public EmployeeWageBuilder(String companyName, int empRatePerHour, int noOfWorkingDays, int maxHoursPerMonth) {
+        this.companyName = companyName;
+        this.empRatePerHour = empRatePerHour;
+        this.noOfWorkingDays = noOfWorkingDays;
+        this.maxHoursPerMonth = maxHoursPerMonth;
+    }
+
+    /* Using static method by passing the 4 argument so that we can call it in static main
+       We have not used static in method here then we have to create an object inside
+       the main for calling this method.
+     */
+
+    public void computeWage() {
         // Declaring the variables
         int empHrs = 0;
         int empWage = 0;
-        int totalEmpWage = 0;
         int totalEmpHrs = 0;
         int totalWorkingDays = 0;
         /*
@@ -44,14 +62,23 @@ public class EmployeeWageBuilder {
                                 ", Employee Wage : " + empWage );
         }
         totalEmpWage = totalEmpHrs * empRatePerHour;
-        System.out.println("Total Wages of an employee in " +companyName + " company is : " + totalEmpWage + "\n");
-        return totalEmpWage;
+    }
+
+    @Override
+    public String toString(){
+        return "Total Wages of an employee in " +companyName + " company is : " + totalEmpWage + "\n";
     }
 
     public static void main(String[] args) {
         System.out.println("Welcome To Employee Wage Computation Program");
-        computeWage("TCS" , 200, 3, 10) ;
-        computeWage("Accenture", 100, 4, 12);
-        computeWage("Infosys", 150, 2, 10);
+        EmployeeWageBuilder infosys = new EmployeeWageBuilder("Infosys", 150, 2, 10);
+        EmployeeWageBuilder tcs = new EmployeeWageBuilder("TCS" , 200, 3, 10);
+        EmployeeWageBuilder accenture = new EmployeeWageBuilder("Accenture", 100, 4, 12);
+        infosys.computeWage();
+        System.out.println(infosys);
+        tcs.computeWage();
+        System.out.println(tcs);
+        accenture.computeWage();
+        System.out.println(accenture);
     }
 }
