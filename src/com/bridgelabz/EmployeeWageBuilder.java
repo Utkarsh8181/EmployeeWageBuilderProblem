@@ -59,7 +59,7 @@ public class EmployeeWageBuilder {
             totalEmpHrs += empHrs;
         }
          totalWage = totalEmpHrs * companyInfo.getEmpRatePerHour();
-        return totalWage;
+         return totalWage;
     }
 
     public static void main(String[] args) {
